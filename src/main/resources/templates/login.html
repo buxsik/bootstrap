@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>LoginPage</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+         </div>
+        <div class="col-4 pt-5 mt-5">
+            <form action="/login" method="post">
+                <div class="form-group">
+                    <h2 class="h2 font-weight-bold">Please sign in</h2>
+                    <input type="text" class="form-control" name="email" id="formGroupExampleInput" placeholder="Email address">
+                    <input type="text" class="form-control" name="password" id="formGroupExampleInput2" placeholder="Password">
+                    <button name="submit" type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                </div>
+            </form>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
