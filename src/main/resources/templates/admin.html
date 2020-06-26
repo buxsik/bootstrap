@@ -31,6 +31,12 @@
         input.newUser:valid {
             background-color: khaki;
         }
+        #fon {
+            background-color: #F8F8F3;!important;
+        }
+        .tab-content {
+            background-color: white;!important;
+        }
     </style>
     <title>Admin Panel</title>
 </head>
@@ -47,27 +53,24 @@
 </nav>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-2">
-            <nav class="sidebar-sticky navbar-expand-md">
-                <div class="collapse navbar-collapse">
-                    <ul class="nav nav-tabs mr-auto flex-column">
-                        <li class="active"><a class="nav-link" data-toggle="tab" href="admin">Admin</a></li>
-                        <li><a class="nav-link" data-toggle="tab" href="">User</a></li>
-                    </ul>
-                </div>
-            </nav>
+        <div class="col-lg-2">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="/admin" role="tab"
+                   aria-controls="v-pills-home" aria-selected="true">Admin</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="/user" role="tab"
+                   aria-controls="v-pills-profile" aria-selected="false">User</a>
+            </div>
         </div>
-        <div class="col-10 mt-3">
+        <div class="col-10 mt-3" id="fon">
             <p3 class="h3 font-weight-bold">Admin Panel</p3>
 
                 <ul class="nav nav-tabs mt-3">
                     <li class="active"><a class="nav-link" data-toggle="tab" href="#userTable">User table</a></li>
                     <li><a class="nav-link" data-toggle="tab" href="#addUser">New User</a></li>
                 </ul>
-
             <div class="tab-content">
                 <div class="tab-pane active" id="userTable">
-                    <table class="table">
+                    <table class="table table-striped">
                         <tr>
                             <td scope="col" class="label font-weight-bolder ">Id</td>
                             <td scope="col" class="label font-weight-bolder label">FirstName</td>
@@ -212,7 +215,7 @@
                 </div>
                 <div class="tab-pane" id="addUser">
                     <div class="row">
-                        <div class="col-4 mt-3">
+                        <div class="col-4 mt-3" id="left">
                             <p class="font-weight-bold">Add new User</p>
                         </div>
                         <div class="col-4 mt-5 text-center" >
