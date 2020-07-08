@@ -19,9 +19,6 @@ public class AdminController {
     private final UserService userService;
     private final RoleService roleService;
 
-    @ModelAttribute("role")
-    public List<Role> initialiseRole() { return roleService.getAllRole(); }
-
     @GetMapping
     public String getAllUser(ModelMap modelMap) {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -39,8 +36,8 @@ public class AdminController {
     }
 
     @PostMapping(value = "/add")
-    public String addUser(@ModelAttribute User user, String[] role) {
-        userService.saveUser(user, role);
+    public String addUser(@ModelAttribute User user, String[] roles) {
+        userService.saveUser(user, roles);
         return "redirect:/admin";
     }
 
@@ -52,8 +49,8 @@ public class AdminController {
     }
 
     @PostMapping(value = "/update")
-    public String updateUser(User user, String[] role) {
-        userService.updateUser(user, role);
+    public String updateUser(User user, String[] roles) {
+        userService.updateUser(user, roles);
         return "redirect:/admin";
     }
 

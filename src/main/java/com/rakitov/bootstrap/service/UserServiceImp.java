@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -45,8 +47,13 @@ public class UserServiceImp implements UserService {
     @Transactional
     @Override
     public void updateUser(User user, String[] roles) {
-        Set<Role> roleSet = new HashSet<>();
+        List<String> roleList = new ArrayList<>();
         for (String role : roles) {
+            String role1 = "ROLE_" + role;
+            roleList.add(role1);
+        }
+        Set<Role> roleSet = new HashSet<>();
+        for (String role : roleList) {
             roleSet.add(roleDao.getRoleByName(role));
         }
         user.setRole(roleSet);
@@ -57,8 +64,13 @@ public class UserServiceImp implements UserService {
     @Transactional
     @Override
     public void saveUser(User user, String[] roles) {
-        Set<Role> roleSet = new HashSet<>();
+        List<String> roleList = new ArrayList<>();
         for (String role : roles) {
+            String role1 = "ROLE_" + role;
+            roleList.add(role1);
+        }
+        Set<Role> roleSet = new HashSet<>();
+        for (String role : roleList) {
             roleSet.add(roleDao.getRoleByName(role));
         }
         user.setRole(roleSet);

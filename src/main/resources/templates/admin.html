@@ -4,40 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <style>
-        label {
-            font-family: Verdana, Geneva, sans-serif;
-            font-size: 12px;!important;
-            font-weight: 900;!important;
-            margin-bottom: 0;!important;
-            padding-bottom: 0px;!important;
-        }
-        h5 {
-            font-family: Verdana, Geneva, sans-serif;
-            font-size: 17px;!important;
-            font-weight: 900;!important;
-            margin-bottom: 0;!important;
-        }
-        input {
-            padding-top: 0px;!important;
-        }
-        .modal-content {
-            width: 80%;
-            height: 50%;
-        }
-        .modal-body {
-            padding-top: 3px;!important;
-        }
-        input.newUser:valid {
-            background-color: khaki;
-        }
-        #fon {
-            background-color: #F8F8F3;!important;
-        }
-        .tab-content {
-            background-color: white;!important;
-        }
-    </style>
+    <link th:href="@{../css/style.css}" rel="stylesheet" />
     <title>Admin Panel</title>
 </head>
 <body>
@@ -56,9 +23,9 @@
         <div class="col-lg-2">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="/admin" role="tab"
-                   aria-controls="v-pills-home" aria-selected="true">Admin</a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="/user" role="tab"
-                   aria-controls="v-pills-profile" aria-selected="false">User</a>
+                   aria-controls="v-pills-home" >Admin</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#" role="tab"
+                   aria-controls="v-pills-profile" onclick="goToSite();">User</a>
             </div>
         </div>
         <div class="col-10 mt-3" id="fon">
@@ -133,9 +100,9 @@
                                                     </div>
                                                     <label>Roles</label>
                                                     <div class="form-group">
-                                                        <select multiple class="form-control form-control-sm" size="2" name="role" th:value="*{role}">
+                                                        <select multiple class="form-control form-control-sm" size="2" name="roles" th:value="*{role}">
                                                             <th:block th:each="role : ${roles}">
-                                                                <option th:value="${role.getName()}" th:text="${role.getName()}"></option>
+                                                                <option th:value="${role}" th:text="${role}"></option>
                                                             </th:block>
                                                         </select>
                                                     </div>
@@ -192,7 +159,7 @@
                                                             <div class="form-group">
                                                             <select multiple class="form-control form-control-sm" size="2" name="role" th:value="*{role}">
                                                                 <th:block th:each="role : ${roles}">
-                                                                    <option th:value="${role.getName()}" th:text="${role.getName()}"></option>
+                                                                    <option th:value="${role}" th:text="${role}"></option>
                                                                 </th:block>
                                                             </select>
                                                             </div>
@@ -242,7 +209,7 @@
                                 </div>
                                 <label  class="label" for="role">Roles</label>
                                 <div class="form-group row">
-                                    <select class="form-control form-control-sm" size="2" id="role" multiple name="role" th:value="*{role}">
+                                    <select class="form-control form-control-sm" size="2" id="role" multiple name="roles" th:value="*{role}">
                                         <th:block th:each="role : ${roles}">
                                             <option th:value="${role}" th:text="${role}"></option>
                                         </th:block>
@@ -260,6 +227,11 @@
         </div>
     </div>
 </div>
+<script>
+    function goToSite() {
+        window.location.href = "http://localhost:8080/user";
+    }
+</script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

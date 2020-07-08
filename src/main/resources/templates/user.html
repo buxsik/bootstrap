@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link th:href="@{../css/style.css}" rel="stylesheet" />
+    <title>User Page</title>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+    <p class="h5 text-white" th:object="${user}"><span th:text="${user.email}"></span> with roles: <span th:each="role : ${user.role}">
+                <span th:text="${role}">UserRole</span>
+            </span></p>
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active text-muted" href="/logout">Logout</a>
+        </li>
+    </ul>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="/user" role="tab"
+                   aria-controls="v-pills-profile" aria-selected="false">User</a>
+            </div>
+        </div>
+        <div class="col-10 mt-5" id="fon">
+            <p3 class="h3 font-weight-bold">User information-page</p3>
+            <div class="tab-content">
+                <div class="tab-pane active mt-5" id="userTable">
+                    <table class="table table-striped">
+                        <tr >
+                            <td class="label font-weight-bolder mb-5 tabUser">About user</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="label font-weight-bolder ">Id</td>
+                            <td scope="col" class="label font-weight-bolder label">FirstName</td>
+                            <td scope="col" class="p5 font-weight-bold">LastName</td>
+                            <td scope="col" class="p5 font-weight-bold">Age</td>
+                            <td scope="col" class="p5 font-weight-bold">Email</td>
+                            <td scope="col" class="p5 font-weight-bold">Role</td>
+                        </tr>
+
+                        <tr th:each="user:${user}">
+                            <td th:text="${user.id}">Id</td>
+                            <td th:text="${user.firstName}">FirstName</td>
+                            <td th:text="${user.lastName}">LastName</td>
+                            <td th:text="${user.age}">Age</td>
+                            <td th:text="${user.email}">Email</td>
+                            <td>
+                                <span th:each="role : ${user.role}">
+                                    <span th:text="${role}">UserRole</span></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</body>
+</html>

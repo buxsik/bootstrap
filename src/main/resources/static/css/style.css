@@ -1,0 +1,35 @@
+label {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;!important;
+    font-weight: 900;!important;
+    margin-bottom: 0;!important;
+    padding-bottom: 0px;!important;
+}
+h5 {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 17px;!important;
+    font-weight: 900;!important;
+    margin-bottom: 0;!important;
+}
+input {
+    padding-top: 0px;!important;
+}
+.tabUser {
+    margin-bottom: 5px;!important;
+}
+.modal-content {
+    width: 80%;
+    height: 50%;
+}
+.modal-body {
+    padding-top: 3px;!important;
+}
+input.newUser:valid {
+    background-color: khaki;
+}
+#fon {
+    background-color: #F8F8F3;!important;
+}
+.tab-content {
+    background-color: white;!important;
+}
