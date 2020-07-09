@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 @Controller
@@ -21,8 +22,7 @@ public class AdminController {
 
     @GetMapping
     public String getAllUser(ModelMap modelMap) {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        modelMap.addAttribute("user", userService.findUserByEmail(email));
+        modelMap.addAttribute("user", userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()));
         modelMap.addAttribute("allUsers", userService.getAllUser());
         modelMap.addAttribute("roles", roleService.getAllRole());
         modelMap.addAttribute("title", "Admin panel");
@@ -51,12 +51,14 @@ public class AdminController {
     @PostMapping(value = "/update")
     public String updateUser(User user, String[] roles) {
         userService.updateUser(user, roles);
+
         return "redirect:/admin";
     }
 
     @GetMapping(value = "/delete")
     public String deleteUser(@PathVariable Long id) {
         userService.removeUser(id);
+
         return "redirect:/admin";
     }
 

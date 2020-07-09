@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -24,8 +26,10 @@
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="/admin" role="tab"
                    aria-controls="v-pills-home" >Admin</a>
+                <div th:if="${#authorization.expression('hasRole(''USER'')')}">
                 <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#" role="tab"
-                   aria-controls="v-pills-profile" onclick="goToSite();">User</a>
+                    aria-controls="v-pills-profile" onclick="goToSite();">User</a>
+                </div>
             </div>
         </div>
         <div class="col-10 mt-3" id="fon">
@@ -117,9 +121,11 @@
                                 </div>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-danger btn-primary label" data-toggle="modal" data-target="#deleteModal" th:attrappend="data-target=${user.getId()}">
+                                <div th:unless="${#authentication.getName() == user.email}">
+                                <button  type="button" class="btn btn-danger btn-primary label" data-toggle="modal" data-target="#deleteModal" th:attrappend="data-target=${user.getId()}">
                                     Delete
                                 </button>
+                                </div>
                                 <div class="modal fade deleteModal-modal-sm" tabindex="-1" role="dialog" id="deleteModal" th:attrappend="id=${user.getId()}" >
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content text-center">
